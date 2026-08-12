@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — TendingDaily</title>
+<meta name="description" content="Who built TendingDaily, and why.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HCT4HWGS5W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HCT4HWGS5W');
+</script>
+<style>
+  :root {
+    --terracotta: oklch(56.2% 0.138 29.8);
+    --terracotta-deep: oklch(49.5% 0.124 29.2);
+    --gold: oklch(72% 0.10 80);
+    --ink: oklch(93% 0.008 53);
+    --ink-soft: oklch(68% 0.02 50);
+    --ink-faint: oklch(52% 0.02 50);
+    --paper: oklch(21% 0.016 40);
+    --vellum: oklch(23% 0.035 38);
+    --border: oklch(38% 0.03 40);
+    --on-terracotta: oklch(98.2% 0.004 53);
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: radial-gradient(ellipse 120% 60% at 50% 0%, var(--vellum), var(--paper) 70%);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 1.5rem; }
+  header.site {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.75rem 1.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  header.site a { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit; }
+  header.site .mark { font-family: var(--font-display); color: var(--terracotta); font-weight: 600; font-size: 1.15rem; letter-spacing: 0.02em; }
+  header.site .name { font-weight: 600; letter-spacing: 0.01em; }
+  section { padding: 2.5rem 0; }
+  section.hero { padding-top: 1.5rem; padding-bottom: 2rem; }
+  section + section { border-top: 1px solid var(--border); }
+  h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 5vw, 2.5rem); line-height: 1.2; margin: 0 0 1rem; color: var(--ink); }
+  h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; margin: 0 0 1rem; color: var(--ink); }
+  p { color: var(--ink-soft); margin: 0 0 1rem; }
+  p:last-child { margin-bottom: 0; }
+  p.lead { color: var(--ink); font-size: 1.05rem; }
+  .card {
+    background: var(--vellum);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+  .card .kicker { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin: 0 0 0.6rem; font-weight: 600; }
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    font-family: var(--font-body);
+    background: var(--terracotta);
+    color: var(--on-terracotta);
+  }
+  .btn:hover { background: var(--terracotta-deep); }
+  footer { padding: 2.5rem 0 3.5rem; text-align: center; }
+  footer p { font-size: 0.82rem; color: var(--ink-faint); }
+  footer a { color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a href="/">
+    <span class="mark">T·D</span>
+    <span class="name">TendingDaily</span>
+  </a>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <h1>Built by one person, for one specific night.</h1>
+    <p class="lead">TendingDaily is founded and built by <strong>Br. Lou Page, fsc</strong> — a De La Salle Christian Brother.</p>
+  </section>
+
+  <section>
+    <h2>Why it exists</h2>
+    <p>The idea started with a memorial prayer I was asked to give, and never forgot — the blank-screen night where I had eleven tabs open, half-right prayers copied from parishes I'd never heard of, trying to make something that felt made, not stitched together at midnight.</p>
+    <p>TendingDaily gives that fifteen minutes somewhere real to go: a booklet or slide deck, built around readings, prayers, and structure you choose — without needing formal liturgical training to do it well.</p>
+  </section>
+
+  <section>
+    <h2>Where it stands</h2>
+    <p>Real, working software, currently in active pilot — not a finished product with every edge sanded off. Built and maintained directly by me, no team or agency behind it. If something's off, that's useful to know, not a surprise.</p>
+    <div class="card" style="margin-top:1.5rem;">
+      <p class="kicker">Get in touch</p>
+      <p style="margin-bottom:1rem;">Questions, feedback, or leading a parish/school and want to talk institutional licensing:</p>
+      <a class="btn" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily" onclick="gtag('event','about_contact_click')">Email Lou</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>TendingDaily &middot; founded by Lou Page fsc &middot; join the pilot, 2026</p>
+</footer>
+
+</body>
+</html>
+
+

@@ -8,6 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HCT4HWGS5W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HCT4HWGS5W');
+</script>
 <style>
   :root {
     --terracotta: oklch(56.2% 0.138 29.8);
@@ -180,8 +187,8 @@
     <h1>Liturgy takes time, thought, effort.<br>Not always. Not here.</h1>
     <p class="tagline">A liturgy maker. <em>Booklet or slide deck.</em> Built for whatever you're planning — near or far.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://app.tendingdaily.org">Start building</a>
-      <a class="btn btn-secondary" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license">Leading a parish or school</a>
+      <a class="btn btn-primary" href="https://app.tendingdaily.org" onclick="gtag('event','start_building_click')">Start building</a>
+      <a class="btn btn-secondary" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license" onclick="gtag('event','get_in_touch_click')">Leading a parish or school</a>
     </div>
   </section>
 
@@ -241,7 +248,7 @@
         <h3>One license. Every volunteer covered.</h3>
         <p>No one pays in the moment they need this most.</p>
         <div class="cta-row" style="margin-top:1rem;">
-          <a class="btn btn-secondary" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license">Get in touch</a>
+          <a class="btn btn-secondary" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license" onclick="gtag('event','get_in_touch_click')">Get in touch</a>
         </div>
       </div>
       <div class="card">
@@ -249,7 +256,7 @@
         <h3>Try it free, the day it happens.</h3>
         <p>Three builds a month, no card required.</p>
         <div class="cta-row" style="margin-top:1rem;">
-          <a class="btn btn-primary" href="https://app.tendingdaily.org">Start building</a>
+          <a class="btn btn-primary" href="https://app.tendingdaily.org" onclick="gtag('event','start_building_click')">Start building</a>
         </div>
       </div>
     </div>

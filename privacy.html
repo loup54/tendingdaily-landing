@@ -84,6 +84,10 @@
   }
   .btn:hover { background: var(--terracotta-deep); }
   .meta { font-size: 0.82rem; color: var(--ink-faint); margin: 0 0 1.5rem; }
+  .toc { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .toc a { color: var(--terracotta); text-decoration: underline; text-underline-offset: 2px; font-size: 0.95rem; }
+  .toc a:hover { color: var(--terracotta-deep); }
+  h2 { scroll-margin-top: 1.5rem; }
   footer { padding: 2.5rem 0 3.5rem; text-align: center; }
   footer p { font-size: 0.82rem; color: var(--ink-faint); }
   footer a { color: var(--ink-faint); }
@@ -107,7 +111,21 @@
   </section>
 
   <section>
-    <h2>What's collected</h2>
+    <div class="card">
+      <p class="kicker">On this page</p>
+      <ul class="toc">
+        <li><a href="#collected">What's collected</a></li>
+        <li><a href="#retention">How long it's kept</a></li>
+        <li><a href="#third-parties">Who else sees it</a></li>
+        <li><a href="#scripture">Scripture, and content you can't edit</a></li>
+        <li><a href="#automated">Automated decisions</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="collected">What's collected</h2>
     <ul>
       <li><strong>What you type into a build</strong> — occasion details, readings choices, and any custom text you add, including names if you're building a memorial or milestone piece. This is sent to Anthropic's API to generate the draft content.</li>
       <li><strong>A cover photo</strong>, if you upload one — you confirm you have rights to use it before it's attached.</li>
@@ -118,7 +136,7 @@
   </section>
 
   <section>
-    <h2>How long it's kept</h2>
+    <h2 id="retention">How long it's kept</h2>
     <ul>
       <li>Build content (the data behind your booklet or slide deck, and the rendered file itself) is automatically deleted <strong>24 hours</strong> after creation.</li>
       <li>An uploaded cover photo is deleted the moment your build finishes rendering — it's never kept past that point.</li>
@@ -127,7 +145,7 @@
   </section>
 
   <section>
-    <h2>Who else sees it</h2>
+    <h2 id="third-parties">Who else sees it</h2>
     <p>A few outside services do specific jobs and only ever see what that job requires:</p>
     <ul>
       <li><strong>Anthropic</strong> — generates your draft content from what you typed in. Subject to their own data handling terms.</li>
@@ -139,18 +157,18 @@
   </section>
 
   <section>
-    <h2>Scripture, and content you can't edit</h2>
+    <h2 id="scripture">Scripture, and content you can't edit</h2>
     <p>Scripture text in a build is locked and can't be edited — it's sourced directly, not generated, so it stays accurate. Everything else — prayers, structure, custom text — is yours to review and change before you finalize.</p>
   </section>
 
   <section>
-    <h2>Automated decisions</h2>
+    <h2 id="automated">Automated decisions</h2>
     <p>TendingDaily uses AI (Anthropic's Claude) to draft liturgy content from what you type in. You review and edit every draft; the AI doesn't decide anything about you. Our software also counts builds, to apply the free-tier limit or your institution's licence. That's a fixed plan rule, not a judgement about you.</p>
     <p>We don't use software to make decisions that could significantly affect your rights or interests.</p>
   </section>
 
   <section>
-    <h2>Analytics</h2>
+    <h2 id="analytics">Analytics</h2>
     <p>This marketing site (tendingdaily.org) uses Google Analytics to see which pages get read. The app itself (app.tendingdaily.org) — where you actually build something — doesn't run any analytics tracking.</p>
   </section>
 

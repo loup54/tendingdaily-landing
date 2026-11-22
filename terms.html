@@ -85,6 +85,10 @@
   .btn:hover { background: var(--terracotta-deep); }
   .meta { font-size: 0.82rem; color: var(--ink-faint); margin: 0 0 1.5rem; }
   .todo { background: var(--vellum); border: 1px dashed var(--border); border-radius: 0.5rem; padding: 0.8rem 1rem; font-size: 0.85rem; color: var(--gold); }
+  .toc { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .toc a { color: var(--terracotta); text-decoration: underline; text-underline-offset: 2px; font-size: 0.95rem; }
+  .toc a:hover { color: var(--terracotta-deep); }
+  h2 { scroll-margin-top: 1.5rem; }
   footer { padding: 2.5rem 0 3.5rem; text-align: center; }
   footer p { font-size: 0.82rem; color: var(--ink-faint); }
   footer a { color: var(--ink-faint); }
@@ -108,27 +112,44 @@
   </section>
 
   <section>
-    <h2>The service</h2>
+    <div class="card">
+      <p class="kicker">On this page</p>
+      <ul class="toc">
+        <li><a href="#the-service">The service</a></li>
+        <li><a href="#free-tier">Free tier</a></li>
+        <li><a href="#individual-subscriptions">Individual subscriptions</a></li>
+        <li><a href="#institutional-licenses">Institutional licenses</a></li>
+        <li><a href="#refunds">Refunds</a></li>
+        <li><a href="#your-content">Your content</a></li>
+        <li><a href="#acceptable-use">Acceptable use</a></li>
+        <li><a href="#uptime">No guarantee of uptime or accuracy</a></li>
+        <li><a href="#changes">Changes to these terms</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="the-service">The service</h2>
     <p>TendingDaily helps parishes, church groups, schools, and individuals build a liturgy booklet or slide deck. You can use it anonymously with a limited number of free builds, or sign in for an individual subscription or an institutional license.</p>
   </section>
 
   <section>
-    <h2>Free tier</h2>
+    <h2 id="free-tier">Free tier</h2>
     <p>Without an account, you get a small number of free builds per browser each month (shown in the app as you use them). No card, no sign-in, no identity attached to what you build.</p>
   </section>
 
   <section>
-    <h2>Individual subscriptions</h2>
+    <h2 id="individual-subscriptions">Individual subscriptions</h2>
     <p>If you sign in and subscribe, builds beyond the free tier are billed per build, at the rate shown on the Stripe checkout page before you confirm. There's no flat monthly fee — you're only charged for builds you actually create, billed through Stripe.</p>
   </section>
 
   <section>
-    <h2>Institutional licenses</h2>
+    <h2 id="institutional-licenses">Institutional licenses</h2>
     <p>Parishes, schools, and other organizations can get an institutional license covering unlimited builds under one account for a fixed annual fee, set out in a separate agreement sent at sign-up. That agreement, not this page, governs institutional accounts where the two differ.</p>
   </section>
 
   <section>
-    <h2>Refunds</h2>
+    <h2 id="refunds">Refunds</h2>
     <ul>
       <li><strong>Per-build charges (individual plan):</strong> a build that completes and generates a usable file is a service already delivered, so it's generally not refundable. If a build fails, errors out, or produces something unusable because of a fault on our end, email us and we'll refund that charge.</li>
       <li><strong>Institutional licenses:</strong> covered by the refund terms in your specific license agreement. If none are stated there, contact us and we'll work it out directly — a brand-new license cancelled shortly after purchase, before meaningful use, gets a full refund.</li>
@@ -137,22 +158,22 @@
   </section>
 
   <section>
-    <h2>Your content</h2>
+    <h2 id="your-content">Your content</h2>
     <p>What you type in and build is yours. We don't claim ownership of it, and we don't use it to train AI models or for anything beyond generating your draft (see the <a href="/privacy.html">privacy page</a> for exactly who sees it and for how long). Scripture text in a build is sourced directly and can't be edited, to keep it accurate; everything else is yours to change.</p>
   </section>
 
   <section>
-    <h2>Acceptable use</h2>
+    <h2 id="acceptable-use">Acceptable use</h2>
     <p>Don't use TendingDaily to generate content that's illegal, harassing, or that infringes someone else's copyright — including the cover photo upload, where you confirm you hold the rights before it's attached. We can suspend an account that does.</p>
   </section>
 
   <section>
-    <h2>No guarantee of uptime or accuracy</h2>
+    <h2 id="uptime">No guarantee of uptime or accuracy</h2>
     <p>This is a small, actively-developed product. We aim for the app to be available and for AI-drafted content to be a solid starting point, but we don't guarantee either — review every draft before using it in a real service, and expect occasional downtime.</p>
   </section>
 
   <section>
-    <h2>Changes to these terms</h2>
+    <h2 id="changes">Changes to these terms</h2>
     <p>If these terms change in a way that matters, we'll update the date at the top of this page. Continuing to use TendingDaily after a change means you accept the update.</p>
   </section>
 

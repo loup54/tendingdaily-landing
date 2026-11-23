@@ -17,16 +17,21 @@
 </script>
 <style>
   :root {
+    /* Round 53: reverted to a light parchment palette -- see
+       frontend/styles.css's file-header comment for the full
+       reasoning (real feedback: the dark version read as "brown" and
+       "not inviting"). Same token values as frontend/styles.css, kept
+       in sync by hand since this page has no shared stylesheet. */
     --terracotta: oklch(56.2% 0.138 29.8);
     --terracotta-deep: oklch(49.5% 0.124 29.2);
-    --gold: oklch(72% 0.10 80);
-    --ink: oklch(93% 0.008 53);
-    --ink-soft: oklch(68% 0.02 50);
-    --ink-faint: oklch(52% 0.02 50);
-    --paper: oklch(21% 0.016 40);
-    --vellum: oklch(23% 0.035 38);
-    --vellum-deep: oklch(28% 0.045 36);
-    --border: oklch(38% 0.03 40);
+    --gold: oklch(52% 0.13 80);
+    --ink: oklch(24% 0.025 40);
+    --ink-soft: oklch(44% 0.02 45);
+    --ink-faint: oklch(58% 0.02 50);
+    --paper: oklch(96% 0.016 75);
+    --vellum: oklch(92% 0.025 72);
+    --vellum-deep: oklch(87% 0.035 68);
+    --border: oklch(78% 0.025 60);
     --on-terracotta: oklch(98.2% 0.004 53);
     --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -36,7 +41,7 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: radial-gradient(ellipse 120% 60% at 50% 0%, var(--vellum-deep), var(--paper) 70%);
+    background: radial-gradient(ellipse 120% 60% at 50% 0%, var(--vellum), var(--paper) 70%);
     color: var(--ink);
     font-family: var(--font-body);
     line-height: 1.6;

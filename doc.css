@@ -1,0 +1,116 @@
+/* Shared styles for about / privacy / terms. Tokens mirror index.html and DESIGN.md. */
+:root {
+  --terracotta: oklch(56.2% 0.138 29.8);
+  --terracotta-deep: oklch(49.5% 0.124 29.2);
+  --terracotta-banked: oklch(38% 0.10 29.5);
+  --gold: oklch(52% 0.13 80);
+  --gold-deep: oklch(42% 0.12 78);
+  --ink: oklch(24% 0.025 40);
+  --ink-soft: oklch(44% 0.02 45);
+  --ink-faint: oklch(52% 0.02 50);
+  --paper: oklch(96% 0.016 75);
+  --vellum: oklch(92% 0.025 72);
+  --vellum-deep: oklch(87% 0.035 68);
+  --border: oklch(78% 0.025 60);
+  --on-terracotta: oklch(98.2% 0.004 53);
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; color-scheme: light; }
+body {
+  margin: 0;
+  background: radial-gradient(ellipse 120% 50% at 20% 0%, oklch(99% 0.025 85), var(--paper) 70%);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 700px; margin: 0 auto; padding: 0 1.5rem; }
+
+header.site {
+  display: flex;
+  align-items: baseline;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem;
+}
+header.site a { display: flex; align-items: baseline; gap: 0.6rem; text-decoration: none; color: inherit; }
+header.site a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: var(--radius-sm); }
+header.site .mark { font-family: var(--font-display); color: var(--terracotta); font-weight: 600; font-size: 1.15rem; letter-spacing: 0.02em; }
+header.site .name { font-weight: 600; letter-spacing: 0.01em; }
+
+section { padding: 2.5rem 0; }
+section.hero { padding-top: 2rem; padding-bottom: 2.25rem; }
+section + section { border-top: 1px solid var(--border); }
+
+h1, h2 { font-family: var(--font-display); font-weight: 500; color: var(--ink); margin: 0 0 1rem; text-wrap: balance; }
+h1 { font-size: clamp(1.9rem, 4.5vw, 2.5rem); line-height: 1.15; letter-spacing: -0.01em; }
+/* Rubric Rule under the page title only */
+h1::after { content: ""; display: block; width: 48px; height: 2px; background: var(--gold); margin-top: 1rem; }
+h2 { font-size: 1.3rem; line-height: 1.25; scroll-margin-top: 1.5rem; }
+
+p { color: var(--ink-soft); margin: 0 0 1rem; max-width: 65ch; }
+p:last-child { margin-bottom: 0; }
+p.lead { color: var(--ink); }
+ul { color: var(--ink-soft); margin: 0 0 1rem; padding-left: 1.2rem; max-width: 65ch; }
+li { margin-bottom: 0.6rem; }
+li:last-child { margin-bottom: 0; }
+li strong { color: var(--ink); }
+
+main a:not(.btn) { color: var(--terracotta-deep); text-underline-offset: 3px; }
+main a:not(.btn):focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+
+.meta { font-size: 0.88rem; color: var(--ink-soft); margin: 0 0 1.5rem; }
+.toc { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.toc li { margin: 0; }
+.toc a { font-size: 0.98rem; }
+
+.card {
+  background: var(--vellum);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+.card .kicker { font-size: 0.9rem; font-weight: 600; color: var(--gold-deep); margin: 0 0 0.6rem; }
+.todo {
+  background: var(--vellum);
+  border: 1px dashed var(--ink-faint);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  color: var(--gold-deep);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-decoration: none;
+  background: var(--terracotta);
+  color: var(--on-terracotta);
+  transition: transform 160ms var(--ease-out), background-color 160ms ease;
+}
+.btn:active { transform: scale(0.97); background: var(--terracotta-banked); }
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { background: var(--terracotta-deep); }
+}
+
+footer { max-width: 700px; margin: 1rem auto 0; padding: 2rem 1.5rem 3.5rem; border-top: 1px solid var(--border); }
+footer p { font-size: 0.88rem; color: var(--ink-soft); max-width: none; }
+footer a { color: var(--ink-soft); text-underline-offset: 3px; }
+footer a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }

@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TendingDaily — a liturgy maker</title>
-<meta name="description" content="Build a booklet or slide deck for whatever you're planning — near or far. Fifteen minutes, max.">
+<meta name="color-scheme" content="light">
+<title>TendingDaily: a liturgy maker</title>
+<meta name="description" content="Build a booklet or slide deck for whatever you're planning, near or far. Fifteen minutes, max.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,46 +18,49 @@
 </script>
 <style>
   :root {
-    /* Round 53: reverted to a light parchment palette -- see
-       frontend/styles.css's file-header comment for the full
-       reasoning (real feedback: the dark version read as "brown" and
-       "not inviting"). Same token values as frontend/styles.css, kept
-       in sync by hand since this page has no shared stylesheet. */
+    /* Tokens mirror frontend/styles.css and DESIGN.md (light parchment, round 53).
+       This page has no shared stylesheet, so keep them in sync by hand. */
     --terracotta: oklch(56.2% 0.138 29.8);
     --terracotta-deep: oklch(49.5% 0.124 29.2);
+    --terracotta-banked: oklch(38% 0.10 29.5);
     --gold: oklch(52% 0.13 80);
+    --gold-deep: oklch(42% 0.12 78);
     --ink: oklch(24% 0.025 40);
     --ink-soft: oklch(44% 0.02 45);
-    --ink-faint: oklch(58% 0.02 50);
+    --ink-faint: oklch(52% 0.02 50);
     --paper: oklch(96% 0.016 75);
     --vellum: oklch(92% 0.025 72);
     --vellum-deep: oklch(87% 0.035 68);
     --border: oklch(78% 0.025 60);
     --on-terracotta: oklch(98.2% 0.004 53);
     --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; color-scheme: light; }
   body {
     margin: 0;
-    background: radial-gradient(ellipse 120% 60% at 50% 0%, var(--vellum), var(--paper) 70%);
+    background: radial-gradient(ellipse 120% 50% at 20% 0%, oklch(99% 0.025 85), var(--paper) 70%);
     color: var(--ink);
     font-family: var(--font-body);
+    font-size: 1.05rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+  .measure { max-width: 38rem; }
 
+  /* ---------- header ---------- */
   header.site {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1.75rem 1.5rem;
-    max-width: 720px;
-    margin: 0 auto;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 1.5rem 0;
   }
   header.site .mark {
     font-family: var(--font-display);
@@ -67,214 +71,401 @@
   }
   header.site .name { font-weight: 600; letter-spacing: 0.01em; }
 
-  section { padding: 3.5rem 0; }
-  section.hero { padding-top: 2rem; padding-bottom: 3rem; }
-  section + section { border-top: 1px solid var(--border); }
-
+  /* ---------- type ---------- */
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; color: var(--ink); margin: 0; }
   h1 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(2.1rem, 6vw, 3rem);
-    line-height: 1.15;
-    margin: 0 0 1.1rem;
-    color: var(--ink);
+    font-size: clamp(1.95rem, 3.5vw, 2.75rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
   }
-  .tagline {
+  h2 {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  h3 { font-size: 1.3rem; line-height: 1.25; }
+  /* The Rubric Rule: a short gold line beneath section headings */
+  h2::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin-top: 0.9rem;
+  }
+  p { color: var(--ink-soft); margin: 0 0 1rem; max-width: 65ch; }
+  p:last-child { margin-bottom: 0; }
+  p.lead { color: var(--ink); }
+
+  section { padding: 4.5rem 0; }
+
+  /* ---------- buttons ---------- */
+  .cta-row { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 160ms var(--ease-out), background-color 160ms ease, border-color 160ms ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .btn-primary { background: var(--terracotta); color: var(--on-terracotta); }
+  .btn-primary:active { background: var(--terracotta-banked); }
+  .btn-secondary {
+    background: var(--vellum);
+    color: var(--ink);
+    border: 1px solid var(--ink-faint);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover { background: var(--terracotta-deep); }
+    .btn-secondary:hover { background: var(--vellum-deep); border-color: var(--terracotta); }
+  }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 1.5rem 0 4rem; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+  .hero .tagline {
     font-size: 1.15rem;
     color: var(--ink-soft);
-    margin: 0 0 2rem;
-    max-width: 30rem;
+    margin: 1.4rem 0 2rem;
+    max-width: 28rem;
   }
-  .tagline em { color: var(--ink); font-style: normal; }
+  .hero .tagline em { color: var(--ink); font-style: normal; font-weight: 500; }
 
-  h2 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 1.5rem;
-    margin: 0 0 1rem;
-    color: var(--ink);
+  figure.sample { margin: 0; position: relative; }
+  /* A vellum plate sits behind the page, offset, so the sample reads as a sheet laid on a desk. No shadow (Flat Page Rule). */
+  .sample-stage { position: relative; }
+  .sample-stage::before {
+    content: "";
+    position: absolute;
+    inset: 1.25rem -1rem -1rem 1.25rem;
+    background: var(--vellum-deep);
+    border-radius: var(--radius-md);
+  }
+  .sample-page {
+    position: relative;
+    aspect-ratio: 5 / 6;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: oklch(99% 0.01 80);
+    -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  }
+  .sample-page img { display: block; width: 100%; height: auto; }
+  figure.sample figcaption {
+    margin-top: 2rem;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
   }
 
-  p { color: var(--ink-soft); margin: 0 0 1rem; }
-  p:last-child { margin-bottom: 0; }
-  p.lead { color: var(--ink); font-size: 1.05rem; }
-
-  .quotes { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.5rem 0; }
-  .quotes p {
+  /* ---------- 2. asked (two column) ---------- */
+  .asked { border-top: 1px solid var(--border); }
+  .asked-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .asked-roles { display: grid; gap: 1.6rem; margin-bottom: 2rem; }
+  .asked-roles p {
     font-family: var(--font-display);
     font-style: italic;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.35;
     color: var(--ink);
-    font-size: 1.05rem;
     margin: 0;
+    max-width: 30ch;
   }
+  .asked-roles p:nth-child(2) { margin-left: 2.5rem; }
+  .asked-roles p:nth-child(3) { margin-left: 5rem; }
 
-  .cta-row { display: flex; gap: 0.85rem; flex-wrap: wrap; margin-top: 1.75rem; }
-  .btn {
-    display: inline-block;
-    padding: 0.7rem 1.4rem;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 0.92rem;
-    text-decoration: none;
-    font-family: var(--font-body);
-  }
-  .btn-primary { background: var(--terracotta); color: var(--on-terracotta); }
-  .btn-primary:hover { background: var(--terracotta-deep); }
-  .btn-secondary {
-    background: none;
-    color: var(--ink-soft);
-    border: 1px solid var(--border);
-  }
-  .btn-secondary:hover { color: var(--ink); border-color: var(--terracotta); }
-
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+  /* ---------- 3. responsibility (full-bleed band, single voice) ---------- */
+  .band { background: var(--vellum); padding: 5.5rem 0; }
+  .band .measure { margin: 0 auto; text-align: center; }
+  .band h2::after { margin-left: auto; margin-right: auto; }
+  .band p { margin-left: auto; margin-right: auto; }
+  .band p.lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.1vw, 1.5rem);
+    line-height: 1.45;
     margin-top: 1.5rem;
   }
-  @media (max-width: 560px) { .split { grid-template-columns: 1fr; } }
-  .split .card {
-    background: var(--vellum);
-    border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-  }
-  .split .card .kicker {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--gold);
-    margin: 0 0 0.6rem;
-    font-weight: 600;
-  }
-  .split .card h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 1.2rem;
-    margin: 0 0 0.5rem;
-    color: var(--ink);
-  }
-  .split .card p { font-size: 0.92rem; margin: 0 0 0.3rem; }
-  .split .card .quote { color: var(--ink-soft); font-style: italic; margin-top: 0.75rem; font-size: 0.88rem; }
 
-  .story-mark {
-    color: var(--terracotta);
+  /* ---------- 4. story (editorial column) ---------- */
+  .story-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+  .story-open {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    line-height: 1.25;
+    color: var(--ink);
+    max-width: 22ch;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .story-body p { font-size: 1.08rem; line-height: 1.7; }
+  .story-body p.lead { margin-top: 1.75rem; }
+  .founder {
+    margin-top: 2.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    max-width: 44ch;
+  }
+  .founder strong { display: block; color: var(--ink); font-weight: 600; margin-top: 0.4rem; }
+
+  /* ---------- 5. vessels (asymmetric pair) ---------- */
+  .vessels { border-top: 1px solid var(--border); }
+  .vessel-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .vessel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5rem;
+  }
+  .vessel.booklet { background: var(--vellum); min-height: 19rem; }
+  .vessel.deck { background: var(--vellum-deep); min-height: 19rem; }
+  .vessel .kind { font-size: 0.9rem; font-weight: 600; color: var(--gold-deep); margin: 0 0 0.5rem; }
+  .vessel h3 { margin-bottom: 0.6rem; }
+  .vessel p { font-size: 0.98rem; }
+  .vessel .line {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink);
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .vessel-note { margin-top: 1.5rem; font-size: 0.95rem; }
+
+  /* ---------- 6. plans ---------- */
+  .plans { border-top: 1px solid var(--border); }
+  .plan-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    align-items: stretch;
+  }
+  .plan {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: space-between;
+  }
+  .plan.individual { background: var(--vellum); }
+  .plan .kind { font-size: 0.9rem; font-weight: 600; color: var(--gold-deep); margin: 0 0 0.5rem; }
+  .plan h3 { margin-bottom: 0.6rem; }
+  .plan p { font-size: 0.98rem; }
+  .proof-note { font-size: 0.88rem; color: var(--ink-soft); margin-top: 2rem; max-width: 62ch; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 2.25rem 0 3.5rem; }
+  footer p { font-size: 0.88rem; color: var(--ink-soft); max-width: none; }
+  footer a { color: var(--ink-soft); text-underline-offset: 3px; }
+  footer a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- entrance (hero only: once per visit, short, ease-out) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .rise {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: rise 420ms var(--ease-out) forwards;
+      animation-delay: calc(var(--i, 0) * 70ms);
+    }
+    @keyframes rise { to { opacity: 1; transform: none; } }
   }
 
-  footer {
-    padding: 2.5rem 0 3.5rem;
-    text-align: center;
-  }
-  footer p { font-size: 0.82rem; color: var(--ink-faint); }
-  footer a { color: var(--ink-faint); }
-
-  .proof-note {
-    font-size: 0.82rem;
-    color: var(--ink-faint);
-    margin-top: 1rem;
+  /* ---------- small screens ---------- */
+  @media (max-width: 800px) {
+    section { padding: 3rem 0; }
+    .band { padding: 3.5rem 0; }
+    .hero { padding-bottom: 2.5rem; }
+    .hero-grid,
+    .asked-grid,
+    .story-grid,
+    .vessel-grid,
+    .plan-grid { grid-template-columns: 1fr; }
+    figure.sample { max-width: 22rem; margin-right: 1rem; }
+    .asked-roles p:nth-child(2),
+    .asked-roles p:nth-child(3) { margin-left: 0; }
+    .story-open { max-width: none; }
+    .vessel.booklet, .vessel.deck { min-height: 0; }
+    .cta-row .btn { flex: 1 1 100%; white-space: normal; }
   }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <span class="mark">T·D</span>
-  <span class="name">TendingDaily</span>
-</header>
+<div class="wrap">
+  <header class="site">
+    <span class="mark">T·D</span>
+    <span class="name">TendingDaily</span>
+  </header>
+</div>
 
-<main class="wrap">
+<main>
 
   <section class="hero">
-    <h1>Liturgy takes time, thought, effort.<br>Not always. Not here.</h1>
-    <p class="tagline">A liturgy maker. <em>Booklet or slide deck.</em> Built for whatever you're planning — near or far.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://app.tendingdaily.org" onclick="gtag('event','start_building_click')">Start building</a>
-      <a class="btn btn-secondary" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license" onclick="gtag('event','get_in_touch_click')">Leading a parish or school</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>"Can you take care of this?"</h2>
-    <div class="quotes">
-      <p>The RE teacher, putting together something for assembly.</p>
-      <p>The volunteer, building the youth group's opening prayer.</p>
-      <p>The parishioner, planning devotions for next month's retreat.</p>
-    </div>
-    <p>Different rooms. Different timelines. Same job: shape something that matters — mostly on your own.</p>
-  </section>
-
-  <section>
-    <h2>Not the writing. The responsibility.</h2>
-    <p>You search. You find something close. You copy, you paste. It works, technically. But it feels borrowed, not made.</p>
-    <p class="lead">The app doesn't ask you to be eloquent. It asks you to care about the people in the room — and gives that care somewhere to go.</p>
-  </section>
-
-  <section>
-    <p class="story-mark">It's 9:40pm on a Wednesday. Your phone buzzes on the counter.</p>
-    <p>A text from the youth group chair: can you open Sunday's gathering with a prayer? Nobody else replied. You say yes before you've thought it through — then sit down and stare at a blank screen, because saying yes and knowing what to say are two different things.</p>
-    <p>By 10:15 you've got eleven tabs open. A prayer from a parish you've never heard of, half-right. A verse you think fits, but you're not sure. You copy, paste, trim, second-guess the trim. It's not that you don't care — you care a lot, which is exactly why this feels so heavy.</p>
-    <p>Here's what's actually riding on it: not just your Sunday, but whether the room feels like someone thought about them, or like something got stitched together at midnight and it shows. You know the difference when you're the one sitting in the pew.</p>
-    <p class="lead">That's the moment this app is built for — not to write it for you, but to give the fifteen minutes you have somewhere real to go. Close the laptop by 10:30, not midnight. Walk in Sunday knowing it's actually yours.</p>
-    <p class="proof-note">— the blank-screen night that started this: a memorial prayer I was asked to give, and never forgot. — Br. Lou Page, fsc, TendingDaily founder</p>
-  </section>
-
-  <section>
-    <h2>Short is better.</h2>
-    <p>Fifteen minutes, max — often less. You choose the vessel.</p>
-    <div class="split">
-      <div class="card">
-        <p class="kicker">Booklet</p>
-        <h3>The intimate room</h3>
-        <p>The memorial. Something to hold. Something to keep.</p>
-        <p class="quote">"This is for you."</p>
-      </div>
-      <div class="card">
-        <p class="kicker">Slide deck</p>
-        <h3>The assembly hall</h3>
-        <p>The parish gathering. Shared together. Seen by everyone.</p>
-        <p class="quote">"This is for us."</p>
-      </div>
-    </div>
-    <p style="margin-top:1.25rem; font-size:0.9rem;">One build. Two outputs. Toggle at the end.</p>
-  </section>
-
-  <section>
-    <h2>You choose the moment. You stay in control.</h2>
-    <p>The blank screen isn't the problem. Not knowing you're allowed to shape the moment is.</p>
-    <p>You were asked because you care. The app gives you a starting point — scripture, structure, suggestions — and you review and shape it into something that's actually yours: a booklet people keep, or slides people share.</p>
-
-    <div class="split" style="margin-top:2rem;">
-      <div class="card">
-        <p class="kicker">Leading a parish or school</p>
-        <h3>One license. Unlimited builds, no per-person accounts.</h3>
-        <p>No one pays in the moment they need this most.</p>
-        <div class="cta-row" style="margin-top:1rem;">
-          <a class="btn btn-secondary" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license" onclick="gtag('event','get_in_touch_click')">Get in touch</a>
-        </div>
-      </div>
-      <div class="card">
-        <p class="kicker">Might be asked, yourself</p>
-        <h3>Try it free, the day it happens.</h3>
-        <p>Sign in with a magic link — no password, no access code needed. Three builds a month included.</p>
-        <div class="cta-row" style="margin-top:1rem;">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="rise" style="--i:0">Liturgy takes time, thought, effort.<br>Not always. Not here.</h1>
+        <p class="tagline rise" style="--i:1">A liturgy maker. <em>Booklet or slide deck.</em> Built for whatever you're planning, near or far.</p>
+        <div class="cta-row rise" style="--i:2">
           <a class="btn btn-primary" href="https://app.tendingdaily.org" onclick="gtag('event','start_building_click')">Start building</a>
+          <a class="btn btn-secondary" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license" onclick="gtag('event','get_in_touch_click')">Leading a parish or school</a>
+        </div>
+      </div>
+      <figure class="sample rise" style="--i:3">
+        <div class="sample-stage">
+          <div class="sample-page">
+            <img src="sample-booklet.png" width="825" height="1275" alt="First page of a sample booklet titled A Service of Remembrance, showing an opening prayer, a Psalm 23 reading, and a reflection.">
+          </div>
+        </div>
+        <figcaption>A finished booklet, built in about ten minutes. Sample output.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="asked">
+    <div class="wrap asked-grid">
+      <h2>"Can you take care of this?"</h2>
+      <div>
+        <div class="asked-roles">
+          <p>The RE teacher, putting together something for assembly.</p>
+          <p>The volunteer, building the youth group's opening prayer.</p>
+          <p>The parishioner, planning devotions for next month's retreat.</p>
+        </div>
+        <p>Different rooms. Different timelines. Same job: shape something that matters, mostly on your own.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="measure">
+        <h2>Not the writing. The responsibility.</h2>
+        <p style="margin-top:1.5rem;">You search. You find something close. You copy, you paste. It works, technically. But it feels borrowed, not made.</p>
+        <p class="lead">The app doesn't ask you to be eloquent. It asks you to care about the people in the room, and gives that care somewhere to go.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="wrap story-grid">
+      <p class="story-open">It's 9:40pm on a Wednesday. Your phone buzzes on the counter.</p>
+      <div class="story-body">
+        <p>A text from the youth group chair: can you open Sunday's gathering with a prayer? Nobody else replied. You say yes before you've thought it through, then sit down and stare at a blank screen, because saying yes and knowing what to say are two different things.</p>
+        <p>By 10:15 you've got eleven tabs open. A prayer from a parish you've never heard of, half-right. A verse you think fits, but you're not sure. You copy, paste, trim, second-guess the trim. It's not that you don't care. You care a lot, which is exactly why this feels so heavy.</p>
+        <p>Here's what's actually riding on it: not just your Sunday, but whether the room feels like someone thought about them, or like something got stitched together at midnight and it shows. You know the difference when you're the one sitting in the pew.</p>
+        <p class="lead">That's the moment this app is built for: not to write it for you, but to give the fifteen minutes you have somewhere real to go. Close the laptop by 10:30, not midnight. Walk in Sunday knowing it's actually yours.</p>
+        <div class="founder">
+          The blank-screen night that started this: a memorial prayer I was asked to give, and never forgot.
+          <strong>Br. Lou Page, fsc, TendingDaily founder</strong>
         </div>
       </div>
     </div>
+  </section>
 
-    <p class="proof-note">Early days — TendingDaily is a real, working app in active pilot, not a finished product with every rough edge sanded off yet. If something's off, that's useful to know, not a surprise. Scripture text can't be edited, to keep it accurate — and anything you upload is deleted within 24 hours.</p>
+  <section class="vessels">
+    <div class="wrap">
+      <h2>Short is better.</h2>
+      <p style="margin-top:1.25rem;">Fifteen minutes, max, often less. You choose the vessel.</p>
+      <div class="vessel-grid">
+        <div class="vessel booklet">
+          <div>
+            <p class="kind">Booklet</p>
+            <h3>The intimate room</h3>
+            <p>The memorial. Something to hold. Something to keep.</p>
+          </div>
+          <p class="line">"This is for you."</p>
+        </div>
+        <div class="vessel deck">
+          <div>
+            <p class="kind">Slide deck</p>
+            <h3>The assembly hall</h3>
+            <p>The parish gathering. Shared together. Seen by everyone.</p>
+          </div>
+          <p class="line">"This is for us."</p>
+        </div>
+      </div>
+      <p class="vessel-note">One build. Two outputs. Toggle at the end.</p>
+    </div>
+  </section>
+
+  <section class="plans">
+    <div class="wrap">
+      <h2>You choose the moment. You stay in control.</h2>
+      <p style="margin-top:1.25rem;">The blank screen isn't the problem. Not knowing you're allowed to shape the moment is.</p>
+      <p>You were asked because you care. The app gives you a starting point (scripture, structure, suggestions) and you review and shape it into something that's actually yours: a booklet people keep, or slides people share.</p>
+
+      <div class="plan-grid">
+        <div class="plan individual">
+          <div>
+            <p class="kind">Might be asked, yourself</p>
+            <h3>Try it free, the day it happens.</h3>
+            <p>Sign in with a magic link. No password, no access code needed. Three builds a month included.</p>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://app.tendingdaily.org" onclick="gtag('event','start_building_click')">Start building</a>
+          </div>
+        </div>
+        <div class="plan">
+          <div>
+            <p class="kind">Leading a parish or school</p>
+            <h3>One license. Unlimited builds, no per-person accounts.</h3>
+            <p>No one pays in the moment they need this most.</p>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn-secondary" href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license" onclick="gtag('event','get_in_touch_click')">Get in touch</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="proof-note">Early days: TendingDaily is a real, working app in active pilot, not a finished product with every rough edge sanded off yet. If something's off, that's useful to know, not a surprise. Scripture text can't be edited, to keep it accurate. Anything you upload is deleted within 24 hours.</p>
+    </div>
   </section>
 
 </main>
 
 <footer>
-  <p>TendingDaily &middot; <a href="/about.html">about</a> &middot; <a href="/privacy.html">privacy</a> &middot; <a href="/terms.html">terms &amp; refunds</a> &middot; join the pilot, 2026</p>
+  <div class="wrap">
+    <p>TendingDaily &middot; <a href="/about.html">about</a> &middot; <a href="/privacy.html">privacy</a> &middot; <a href="/terms.html">terms &amp; refunds</a> &middot; join the pilot, 2026</p>
+  </div>
 </footer>
 
 </body>
 </html>
-

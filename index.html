@@ -162,7 +162,7 @@
   .brand { display: flex; align-items: baseline; gap: 0.55rem; text-decoration: none; color: var(--ink); }
   .brand .mark { font-family: var(--font-display); font-weight: 700; color: var(--terracotta-deep); letter-spacing: 0.02em; }
   .brand .name { font-weight: 700; letter-spacing: 0.01em; }
-  .bar nav { display: none; gap: 0.25rem; }
+  .bar nav { display: none; align-items: center; gap: 0.25rem; }
   .bar nav a {
     padding: 0.4rem 0.95rem; border-radius: 999px;
     font-size: 0.95rem; font-weight: 600; color: var(--ink-soft); text-decoration: none;
@@ -171,6 +171,8 @@
   .bar nav a:focus-visible, .brand:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
   @media (hover: hover) and (pointer: fine) { .bar nav a:hover { background: rgb(29 27 25 / 0.07); color: var(--ink); } }
   @media (min-width: 960px) { .bar nav { display: flex; } }
+  .nav-divider { width: 1px; height: 1.1rem; background: rgb(29 27 25 / 0.15); margin: 0 0.15rem; }
+  .bar nav a.nav-func { font-weight: 500; opacity: 0.8; }
 
   /* ---------- ACT I, 9:40 PM: the midnight chamber ---------- */
   .act-1 {
@@ -360,6 +362,9 @@
     <a href="#dawn">Dawn</a>
     <a href="#morning">Morning</a>
     <a href="#walkin">Walk in</a>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <a class="nav-func" href="#sample">Sample</a>
+    <a class="nav-func" href="#pricing">Pricing</a>
   </nav>
   <a class="btn btn-primary btn-sm" href="https://app.tendingdaily.org" onclick="gtag('event','start_building_click')">Start building</a>
 </header>
@@ -529,7 +534,7 @@
 
         <div class="reveal">
           <div class="pair">
-            <figure class="sample">
+            <figure class="sample" id="sample">
               <div class="sample-page">
                 <img src="sample-booklet.png" width="825" height="1275" loading="lazy" alt="First page of a sample booklet titled A Service of Remembrance, showing an opening prayer, a Psalm 23 reading, and a reflection.">
               </div>
@@ -564,7 +569,7 @@
         <div class="cap"><p>Walk in Sunday knowing it's actually yours.</p></div>
       </div>
 
-      <div class="paths reveal">
+      <div class="paths reveal" id="pricing">
         <article class="path">
           <p class="kind">Might be asked, yourself</p>
           <h3>Try it free, the day it happens.</h3>

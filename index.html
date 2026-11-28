@@ -174,6 +174,21 @@
   .nav-divider { width: 1px; height: 1.1rem; background: rgb(29 27 25 / 0.15); margin: 0 0.15rem; }
   .bar nav a.nav-func { font-weight: 500; opacity: 0.8; }
 
+  .faq { padding: 5rem 0 6rem; }
+  .faq .intro { text-align: center; max-width: 40rem; margin: 0 auto 3rem; }
+  .faq-list { max-width: 42rem; margin: 0 auto; border-top: 1px solid rgb(29 27 25 / 0.12); }
+  .faq-item { border-bottom: 1px solid rgb(29 27 25 / 0.12); }
+  .faq-item summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1.25rem 0.25rem; font-family: var(--font-display); font-weight: 600;
+    font-size: 1.1rem; color: var(--ink); cursor: pointer; list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary .ms { font-size: 22px; color: var(--ink-soft); transition: transform 350ms var(--ease-out); flex: none; }
+  .faq-item[open] summary .ms { transform: rotate(180deg); }
+  .faq-item p { padding: 0 0.25rem 1.25rem; color: var(--ink-soft); }
+  .faq-item a { color: var(--terracotta-deep); }
+
   /* ---------- ACT I, 9:40 PM: the midnight chamber ---------- */
   .act-1 {
     position: relative; overflow: hidden;
@@ -365,6 +380,7 @@
     <span class="nav-divider" aria-hidden="true"></span>
     <a class="nav-func" href="#sample">Sample</a>
     <a class="nav-func" href="#pricing">Pricing</a>
+    <a class="nav-func" href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-primary btn-sm" href="https://app.tendingdaily.org" onclick="gtag('event','start_building_click')">Start building</a>
 </header>
@@ -592,6 +608,78 @@
       </div>
 
       <p class="proof-note">Early days: TendingDaily is a real, working app in active pilot, not a finished product with every rough edge sanded off yet. If something's off, that's useful to know, not a surprise. Scripture text can't be edited, to keep it accurate. Anything you upload is deleted within 24 hours.</p>
+    </div>
+  </section>
+
+  <section class="faq on-light" id="faq">
+    <div class="wrap">
+      <div class="intro reveal">
+        <span class="pill light"><span class="ms" aria-hidden="true">help</span>FAQ</span>
+        <h2>Questions, answered.</h2>
+      </div>
+
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>What is TendingDaily?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>It's a liturgy maker. You choose the occasion, the tradition and the readings, and in about fifteen minutes TendingDaily builds a prayer service you can print as a booklet or show as a slide deck.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Who is it for?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Anyone who's said yes to leading a prayer: a youth group, a staff meeting, a memorial, a class Mass, a retreat. Parishes and schools can also license it for everyone who leads prayer there.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What do I actually get?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Two things from the same build: a print-ready half-letter PDF booklet, for a smaller room, and a slide deck, for a hall or a projector. You pick which one at setup, matched to the occasion, and can change it before you build.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How is a service put together?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Each build follows a familiar shape: opening, readings, reflection and closing blessing. You choose the tradition, the language and the type of event, and the service is built to fit.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where does the Scripture come from? Can it be changed?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Readings are pulled from the New American Bible, Revised Edition and locked, so nobody can edit them by accident or on purpose. What appears in your booklet is what's in the text, with the required copyright line attached.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which traditions and languages are supported?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Catholic, Ecumenical, Non-denominational and Lasallian traditions. Builds run in English, Spanish, Vietnamese and French today, with Tagalog and Urdu on the way.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does TendingDaily use AI?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Yes, for some parts, such as a draft reflection or prayer. Every AI-written section is labelled, and each build includes a short provenance link showing what came from Scripture, what came from you and what was generated. Scripture itself is never AI-written.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I edit the prayers and reflection?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Yes, everything except the readings.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens to files I upload?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>They're deleted within 24 hours; a cover photo is deleted the moment your build finishes rendering. If you sign in, we also keep your email and build count for as long as your account exists — see the <a href="/privacy.html">privacy page</a> for the full picture.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need a password?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>No. Enter your email and we'll send you a sign-in link. No password and no access code.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does it cost?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Individuals get three builds a month free. Parishes and schools can take out one institutional license: unlimited builds, with no need to set up accounts for each person. <a href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license">Email us</a> for a quote.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens after my three free builds?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Wait until next month, upgrade to pay per build, or ask your parish or school about a license.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can my parish or school try it before buying?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Yes — <a href="mailto:ourenglish2019@gmail.com?subject=TendingDaily%20institutional%20license">email us</a> for a 14-day free trial, no card needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is it finished?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Not yet. TendingDaily is in an active pilot for 2026, so you may hit a rough edge. If you do, tell us at <a href="mailto:ourenglish2019@gmail.com">ourenglish2019@gmail.com</a>. We read every message.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Who makes TendingDaily?<span class="ms" aria-hidden="true">expand_more</span></summary>
+          <p>Lou Page, fsc, a De La Salle Brother who has been the one up late before a prayer service more than once.</p>
+        </details>
+      </div>
     </div>
   </section>
 
